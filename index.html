@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>Antibiotic Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💊</text></svg>" />
+</head>
+<body>
+  <header>
+    <h1>💊 Antibiotic Tracker</h1>
+    <p class="sub">Every 8 hours · 10-day course</p>
+  </header>
+
+  <main>
+    <section class="status" id="status">
+      <div class="status-card" id="nextCard">
+        <span class="status-label">Next dose</span>
+        <span class="status-value" id="nextDose">—</span>
+      </div>
+      <div class="status-card">
+        <span class="status-label">Progress</span>
+        <span class="status-value" id="progress">0 / 30</span>
+      </div>
+    </section>
+
+    <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+
+    <section class="controls">
+      <label for="startDate">Course start date</label>
+      <input type="date" id="startDate" />
+      <p class="hint">First dose 8:00 AM on the start date. Times: 8 AM · 4 PM · 12 AM (midnight).</p>
+    </section>
+
+    <section id="schedule" class="schedule"></section>
+
+    <section class="footer-actions">
+      <button id="resetBtn" class="reset" type="button">Reset all check-ins</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Saved on this device only. <span id="savedNote"></span></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
