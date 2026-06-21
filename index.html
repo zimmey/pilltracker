@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0f766e" />
   <title>Antibiotic Tracker</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <!-- Cache buster: load CSS with a fresh timestamp on every page load.
+       document.write keeps it synchronous so there's no flash of unstyled content. -->
+  <script>document.write('<link rel="stylesheet" href="styles.css?v=' + Date.now() + '">');</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💊</text></svg>" />
 </head>
 <body>
@@ -45,6 +49,13 @@
     <p>Saved on this device only. <span id="savedNote"></span></p>
   </footer>
 
-  <script src="app.js"></script>
+  <!-- Cache buster: load the app with a fresh timestamp on every page load. -->
+  <script>
+    (function () {
+      var s = document.createElement("script");
+      s.src = "app.js?v=" + Date.now();
+      document.body.appendChild(s);
+    })();
+  </script>
 </body>
 </html>
