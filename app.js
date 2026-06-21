@@ -103,7 +103,7 @@
     });
 
     var firstPending = null;
-    var firstPendingEl = null;
+    var firstPendingGroupEl = null;
 
     groups.forEach(function (group) {
       var groupEl = document.createElement("div");
@@ -168,7 +168,7 @@
           render();
         });
 
-        if (isFirstPending) firstPendingEl = btn;
+        if (isFirstPending) firstPendingGroupEl = groupEl;
         groupEl.appendChild(btn);
       });
 
@@ -195,8 +195,8 @@
 
     savedNoteEl.textContent = "Started " + startISO + ".";
 
-    if (scrollToNext && firstPendingEl) {
-      firstPendingEl.scrollIntoView({ block: "start", behavior: "smooth" });
+    if (scrollToNext && firstPendingGroupEl) {
+      firstPendingGroupEl.scrollIntoView({ block: "start", behavior: "smooth" });
     }
   }
 

@@ -88,7 +88,7 @@ main {
 }
 .controls .hint { margin: 8px 0 0; font-size: 0.78rem; color: var(--muted); }
 
-.day-group { margin-bottom: 16px; }
+.day-group { margin-bottom: 16px; scroll-margin-top: 14px; }
 .day-head {
   display: flex;
   justify-content: space-between;
