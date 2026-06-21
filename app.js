@@ -78,7 +78,7 @@
   }
 
   // --- render --------------------------------------------------------------
-  function render() {
+  function render(scrollToNext) {
     var startISO = startInput.value || loadStart();
     var taken = loadTaken();
     var now = new Date();
@@ -103,6 +103,7 @@
     });
 
     var firstPending = null;
+    var firstPendingEl = null;
 
     groups.forEach(function (group) {
       var groupEl = document.createElement("div");
@@ -128,7 +129,8 @@
           dose.when.getTime() - now.getTime() > 0;
         var overdue = !isTaken && isPast;
 
-        if (!isTaken && !firstPending) firstPending = dose;
+        var isFirstPending = !isTaken && !firstPending;
+        if (isFirstPending) firstPending = dose;
 
         var btn = document.createElement("button");
         btn.type = "button";
@@ -166,6 +168,7 @@
           render();
         });
 
+        if (isFirstPending) firstPendingEl = btn;
         groupEl.appendChild(btn);
       });
 
@@ -191,6 +194,10 @@
     }
 
     savedNoteEl.textContent = "Started " + startISO + ".";
+
+    if (scrollToNext && firstPendingEl) {
+      firstPendingEl.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
   }
 
   // --- init ----------------------------------------------------------------
@@ -209,7 +216,7 @@
     }
   });
 
-  render();
+  render(true);
   // keep "overdue / due now" fresh while the page is open
-  setInterval(render, 60 * 1000);
+  setInterval(function () { render(); }, 60 * 1000);
 })();
