@@ -196,7 +196,7 @@
     savedNoteEl.textContent = "Started " + startISO + ".";
 
     if (scrollToNext && firstPendingEl) {
-      firstPendingEl.scrollIntoView({ block: "center", behavior: "smooth" });
+      firstPendingEl.scrollIntoView({ block: "start", behavior: "smooth" });
     }
   }
 
